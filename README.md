@@ -9,7 +9,7 @@ in the box as an obstacle and a heat source. Everything runs on the GPU with [NV
 
 ![melting bunny](docs/sheet.png)
 
-*Stanford bunny of chocolate-like material in front of a 400 W fan heater (first seconds of `scripts/run_scene.py --fan 2.0`), rendered with `scripts/render.py`.*
+*Stanford bunny of a chocolate-like material in front of a 400 W fan heater, 0 to 14 s (`scripts/run_scene.py --fan 2.0 --power 400 --t-cap 120`), rendered with `scripts/render.py`.*
 
 ## What is solved
 
