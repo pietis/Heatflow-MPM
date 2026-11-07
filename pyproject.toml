@@ -7,6 +7,7 @@ name = "heatflow-mpm"
 version = "0.1.0"
 description = "Eulerian heat-and-airflow surroundings solver for thermal MPM systems (Warp + NVIDIA Newton)"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = ["numpy", "warp-lang>=1.7", "trimesh", "scipy", "matplotlib"]
 

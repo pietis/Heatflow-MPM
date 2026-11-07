@@ -83,3 +83,7 @@ material position, and a cold solid holding its shape with the heater off.
 - A. Stomakhin, C. Schroeder, C. Jiang, L. Chai, J. Teran, A. Selle, Augmented MPM for phase-change and varied materials, SIGGRAPH 2014.
 - NVIDIA Newton (SolverImplicitMPM) and NVIDIA Warp.
 - Stanford bunny mesh: Stanford Computer Graphics Laboratory.
+
+## License
+
+MIT (see LICENSE).
