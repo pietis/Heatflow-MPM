@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+data/
+*.npz
+*.ply
+*.png
+*.mp4
+*.log
+.pytest_cache/

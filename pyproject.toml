@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heatflow-mpm"
+version = "0.1.0"
+description = "Eulerian heat-and-airflow surroundings solver for thermal MPM systems (Warp + NVIDIA Newton)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy", "warp-lang>=1.7", "trimesh", "scipy", "matplotlib"]
+
+[project.optional-dependencies]
+render = ["mitsuba>=3.6", "scikit-image", "pillow", "imageio[ffmpeg]", "shapely", "mapbox-earcut", "manifold3d"]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["heatflow_mpm*"]
