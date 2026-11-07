@@ -10,3 +10,4 @@ data/
 *.mp4
 *.log
 .pytest_cache/
+!docs/*.png
