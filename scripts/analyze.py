@@ -1,4 +1,4 @@
-"""Timeline table and side views of a run: particles coloured by melt fraction over the air temperature slice through the material centre.
+"""Melt timeline table and side views (particles by melt fraction over the air temperature slice).
 
     python scripts/analyze.py --run data/bunny_fan --every 100
 """
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--run", required=True); ap.add_argument("--every", type=int, default=100); a = ap.parse_args()
-    st = np.load(f"{a.run}/static.npz"); n = int(st["grid_n"]); h = float(st["cell"]); L = float(st["box"][1, 0])
+    st = np.load(f"{a.run}/static.npz"); n = int(st["n"]); h = float(st["h"]); L = float(st["L"])
     frames = sorted(glob.glob(f"{a.run}/frames/frame_*.npz")); picks = []
     print("t(s) | height cm | rms radius cm | melted % | partly % | particle mean T | air T 2 cm above | air mean T | air speed max m/s")
     for k, f in enumerate(frames):

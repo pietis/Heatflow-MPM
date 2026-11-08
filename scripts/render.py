@@ -1,11 +1,9 @@
-"""Ray-traced renders of a run (Mitsuba 3, CPU): the material surface is rebuilt from the particles (mass splat on a half-spacing grid,
-Gaussian smoothing, marching cubes at half the bulk density, Taubin smoothing, clipped at the floor) and rendered as a glossy material
-on a pan on a grey table, with the heater drawn where the physics has it (reflector trough, glowing rods, grille, post, base). The camera
-aims and focuses on the material; the field of view is fitted so that a chosen fraction of the heater head is in frame.
+"""Ray-traced renders (Mitsuba 3, CPU): the material surface rebuilt from the particles (mass splat, marching cubes), a pan, a table and the
+heater where the physics has it. The camera aims and focuses on the material; the field of view is fitted so a chosen fraction of the
+heater head is in frame.
 
-    python scripts/render.py --run data/bunny_fan --times 0 2 4 6 8 10 12 14          # contact sheet
-    python scripts/render.py --run data/bunny_fan --every 5 --video                    # all frames, 10 fps
-Requires the 'render' extra: mitsuba, scikit-image, scipy, trimesh, shapely, mapbox-earcut, manifold3d, pillow, imageio[ffmpeg].
+    python scripts/render.py --run data/bunny_fan --times 0 2 4 6 8 10 12 14      # contact sheet
+    python scripts/render.py --run data/bunny_fan --every 5 --video                # 10 fps video
 """
 from __future__ import annotations
 
@@ -147,7 +145,7 @@ def main():
     ap.add_argument("--heater_visible", type=float, default=0.70); ap.add_argument("--no-pan", action="store_true")
     ap.add_argument("--width", type=int, default=1000); ap.add_argument("--height", type=int, default=700); ap.add_argument("--spp", type=int, default=160)
     a = ap.parse_args(); out = a.out or f"{a.run}/render"; os.makedirs(out, exist_ok=True)
-    st = np.load(f"{a.run}/static.npz"); spacing = float(st["spacing"]); L = float(st["box"][1, 0]); centre = (L / 2, L / 2)
+    st = np.load(f"{a.run}/static.npz"); spacing = float(st["spacing"]); L = float(st["L"]); centre = (L / 2, L / 2)
     frames = sorted(glob.glob(f"{a.run}/frames/frame_*.npz")); fdt = float(np.load(frames[1])["t"]) - float(np.load(frames[0])["t"])
     ks = [int(round(t / fdt)) for t in a.times] if a.times else list(range(0, len(frames), max(1, a.every)))
     parts = [] if a.no_pan else pan_meshes(centre, a.az)
